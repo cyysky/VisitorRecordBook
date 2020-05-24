@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.FileProvider.getUriForFile
 import androidx.navigation.NavController
 import com.FMC.VisitorBook.ui.myqr.my_qr
 import com.FMC.VisitorBook.ui.record.record
@@ -21,7 +22,10 @@ import java.io.File
 import java.util.*
 
 
-class FloatingActionClass {
+class FloatingActionClass (context:Context){
+    // variable to hold context
+    var context: Context? = context
+
     val TAG ="FloatingActionClass"
     var mainActivity: MainActivity?=null
     var navCtrl :NavController?=null
@@ -101,17 +105,19 @@ class FloatingActionClass {
                     REQUEST_EXTERNAL_STORAGE
                 );
             }
-            var file = File(Environment.getExternalStorageDirectory().getPath()+"/VisitorBook/Records.csv");
+            var path = context?.getExternalFilesDir(null)
+            var pathFolder = File(path,"records")
+            var file = File(pathFolder,"Records.csv");
             if(file.exists()){
-
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("content://com.FMC.VisitorBook.fileprovider/VisitorBookFiles/Records.csv"))
-                    intent.setDataAndType(Uri.parse("content://com.FMC.VisitorBook.fileprovider/VisitorBookFiles/Records.csv"), "text/csv");
+                    //var contentUri = getUriForFile(context, "com.mydomain.fileprovider", "Records.csv");
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("content://com.FMC.VisitorBook.fileprovider/path/Records.csv"))
+                    intent.setDataAndType(Uri.parse("content://com.FMC.VisitorBook.fileprovider/path/Records.csv"), "text/csv");
                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     mainActivity?.startActivity(intent)
 
             }else{
-                Toast.makeText(mainActivity,"/VisitorBook/Records.csv not found, try save some records first.",Toast.LENGTH_LONG).show()
-                Log.d(TAG,"/VisitorBook/Records.csv not found, try save some records first.")
+                Toast.makeText(mainActivity,"Records.csv not found, try save some records first.",Toast.LENGTH_LONG).show()
+                Log.d(TAG,"Records.csv not found, try save some records first.")
             }
         } catch (e: ActivityNotFoundException) {
             Toast.makeText(mainActivity,e.message ,Toast.LENGTH_LONG).show()
@@ -136,26 +142,29 @@ class FloatingActionClass {
                     REQUEST_EXTERNAL_STORAGE
                 );
             }
-            val success = File(Environment.getExternalStorageDirectory().getPath()+"/VisitorBook").mkdirs()
+            var path = context?.getExternalFilesDir(null)
+
+            var myQRImageFile = File(path,"records")
+            var success = myQRImageFile.mkdirs()
             Log.d(TAG,"Created dir success : "+success)
 
             my_qr?.saveQRImage()
-            var file = File(Environment.getExternalStorageDirectory().getPath()+"/VisitorBook/MyQR.jpg");
+            var file = File(myQRImageFile,"MyQR.jpg");
             if(file.exists()){
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
                     putExtra(
                         Intent.EXTRA_STREAM,
-                        Uri.parse("content://com.FMC.VisitorBook.fileprovider/VisitorBookFiles/MyQR.jpg")
+                        Uri.parse("content://com.FMC.VisitorBook.fileprovider/path/MyQR.jpg")
                     )
                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     type = "image/jpeg"
                 }
-                val shareIntent = Intent.createChooser(sendIntent, "Send MyQR.jpg to ...")
+                var shareIntent = Intent.createChooser(sendIntent, "Send MyQR.jpg to ...")
                 mainActivity?.startActivity(shareIntent)
             }else{
-                Toast.makeText(mainActivity,"/VisitorBook/MyQR.jpg not found",Toast.LENGTH_LONG).show()
-                Log.d(TAG,"/VisitorBook/MyQR.jpg not found")
+                Toast.makeText(mainActivity,"MyQR.jpg not found",Toast.LENGTH_LONG).show()
+                Log.d(TAG,"MyQR.jpg not found")
             }
         }catch(e:Exception){
             Toast.makeText(mainActivity,e.message ,Toast.LENGTH_LONG).show()
@@ -165,14 +174,16 @@ class FloatingActionClass {
 
     fun shareRecord(){
         try {
-            var file = File(Environment.getExternalStorageDirectory().getPath()+"/VisitorBook/Records.csv");
+            var path = context?.getExternalFilesDir(null)
+            var recordPath = File(path,"records")
+            var file = File(recordPath,"Records.csv");
             if(file.exists()){
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     putExtra(
                         Intent.EXTRA_STREAM,
-                        Uri.parse("content://com.FMC.VisitorBook.fileprovider/VisitorBookFiles/Records.csv")
+                        Uri.parse("content://com.FMC.VisitorBook.fileprovider/path/Records.csv")
                     )
                     type = "text/*"
                 }
@@ -181,8 +192,8 @@ class FloatingActionClass {
                 mainActivity?.startActivity(shareIntent)
             }
             else{
-                Toast.makeText(mainActivity,"/VisitorBook/Records.csv not found, try save some records first.",Toast.LENGTH_LONG).show()
-                Log.d(TAG,"/VisitorBook/Records.csv not found, try save some records first.")
+                Toast.makeText(mainActivity,"Records.csv not found, try save some records first.",Toast.LENGTH_LONG).show()
+                Log.d(TAG,"Records.csv not found, try save some records first.")
             }
         }catch(e:Exception){
             Toast.makeText(mainActivity,e.message ,Toast.LENGTH_LONG).show()
@@ -205,13 +216,22 @@ class FloatingActionClass {
                     REQUEST_EXTERNAL_STORAGE
                 );
             }
-            val success = File(Environment.getExternalStorageDirectory().getPath()+"/VisitorBook").mkdirs()
+
+            Log.d(TAG,"isExternalStorageReadOnly() : "+isExternalStorageReadOnly())
+            Log.d(TAG,"isExternalStorageAvailable() : "+isExternalStorageAvailable())
+
+            var path = context?.getExternalFilesDir(null)
+            var pathFolder = File(path,"records")
+            //Log.d(TAG,"Created dir"+path)
+            //Log.d(TAG,"Created dir 2"+pathFolder)
+            val success =pathFolder.mkdirs()
             Log.d(TAG,"Created dir success : "+success)
-            val myFile = File(Environment.getExternalStorageDirectory().getPath()+"/VisitorBook/Records.csv")
+
+            var myFile =File(pathFolder,"Records.csv");
 
             // Send all output to the Appendable object sb
             var currentTime = Calendar.getInstance().getTime()
-            val sb = StringBuilder()
+            var sb = StringBuilder()
             //var re = Regex()
             //val ss = java.lang.String.format(Str, userName, userArea, age, userSex)
             //var recordText = String.format("%1$s,%s,%s,%s,%s,%s,%s,%s,%s\n",
@@ -234,9 +254,14 @@ class FloatingActionClass {
             sb.append(clearString(if (recordModel?.note!=null) recordModel?.note.toString() else ""))
             sb.append(",\n")
             var recordText= sb.toString()
+
             //myFile.writeText(text)
             if (recordText != null) {
+                Log.d(TAG,recordText)
                 myFile.appendText(recordText)
+                //FileOutputStream(myFile).use {
+                //    it.write("record goes here".getBytes())
+                //}
                 recordClass?.resetView()
                 Toast.makeText(mainActivity,"Record Saved",Toast.LENGTH_LONG).show()
             }
@@ -249,5 +274,19 @@ class FloatingActionClass {
 
     fun clearString(str : String):String{
         return str.replace(",","")
+    }
+
+    private fun isExternalStorageReadOnly(): Boolean {
+        val extStorageState = Environment.getExternalStorageState()
+        return if (Environment.MEDIA_MOUNTED_READ_ONLY == extStorageState) {
+            true
+        } else false
+    }
+
+    private fun isExternalStorageAvailable(): Boolean {
+        val extStorageState = Environment.getExternalStorageState()
+        return if (Environment.MEDIA_MOUNTED == extStorageState) {
+            true
+        } else false
     }
 }

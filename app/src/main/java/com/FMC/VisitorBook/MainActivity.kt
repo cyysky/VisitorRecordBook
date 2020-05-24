@@ -25,8 +25,7 @@ class MainActivity : AppCompatActivity() {
     private var scanResults: TextView? = null
 
 
-    public val FAC: FloatingActionClass =
-        FloatingActionClass()
+    public val FAC: FloatingActionClass =FloatingActionClass(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         FAC.setFABListener(fab)
         FAC.mainActivity=this
         FAC.testValue="mainActivity"
+
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)

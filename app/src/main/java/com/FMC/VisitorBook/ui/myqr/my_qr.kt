@@ -22,6 +22,7 @@ import com.FMC.VisitorBook.MainActivity
 import com.FMC.VisitorBook.R
 import com.FMC.VisitorBook.RecordModel
 import com.google.gson.Gson
+import java.io.File
 import java.io.FileOutputStream
 
 
@@ -146,7 +147,10 @@ class my_qr : Fragment() {
     fun saveQRImage(){
         try {
             setQRImage(getString())
-            FileOutputStream(Environment.getExternalStorageDirectory().getPath()+ "/VisitorBook/MyQR.jpg").use({ out ->
+            var path = context?.getExternalFilesDir(null)
+            val myQRImageFile = File(path,"records")
+            var file = File(myQRImageFile,"MyQR.jpg");
+            FileOutputStream(file).use({ out ->
                 bitmap?.compress(Bitmap.CompressFormat.PNG, 100, out) // bmp is your Bitmap instance
             })
         } catch (e: Exception) {
