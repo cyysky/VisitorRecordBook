@@ -1,9 +1,9 @@
 # Visitor Record Book by FMC Version 1 Version Name 1.1
 
-# OpenSource project
-
 # Play Store listing
 https://play.google.com/store/apps/details?id=com.FMC.VisitorRecordBook
+
+# OpenSource project
 
 Fortune Machine Computer FMC机器电脑
 
