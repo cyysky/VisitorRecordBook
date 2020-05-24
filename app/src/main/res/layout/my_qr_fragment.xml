@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.FMC.VisitorBook.ui.myqr.my_qr">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_marginBottom="60dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/myqrImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/myqr_image_description"
+                android:minWidth="256dp"
+                android:minHeight="256dp"
+                 />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/my_information" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Name" />
+
+            <EditText
+                android:id="@+id/myqrEditTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/Name"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/phone" />
+
+            <EditText
+                android:id="@+id/myqrEditTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/phone"
+                android:inputType="phone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/body_tempreture" />
+
+            <EditText
+                android:id="@+id/myqrEditTextCelsius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/body_tempreture"
+                android:inputType="numberDecimal"
+                android:autofillHints="" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:drawable/bottom_bar"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/my_other_information" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/identity_card_no" />
+
+            <EditText
+                android:id="@+id/myqrEditTextIC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/identity_card_no"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/employee_identity_no" />
+
+            <EditText
+                android:id="@+id/myqrEditTextEmpNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/employee_identity_no"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/myqrEditTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/address" />
+
+            <EditText
+                android:id="@+id/myqrEditTextAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/address"
+                android:inputType="textPostalAddress" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/note" />
+
+            <EditText
+                android:id="@+id/myqrEditTextNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/note"
+                android:inputType="textPersonName" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

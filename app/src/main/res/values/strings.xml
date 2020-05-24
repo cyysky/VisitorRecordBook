@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">VisitorRecordBook by FMC</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">>VisitorRecordBook</string>
+    <string name="nav_header_subtitle">fortunemachinecomputer@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_my_qr">My QR</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="Name">Name</string>
+    <string name="my_information">My information</string>
+    <string name="phone">Contact phone number</string>
+    <string name="identity_card_no">Identity card no</string>
+    <string name="my_other_information">My other information</string>
+    <string name="employee_identity_no">Employee identity no</string>
+    <string name="email">E-Mail</string>
+    <string name="address">Address</string>
+    <string name="note">Note</string>
+    <string name="body_tempreture">Body tempreture in Celsius C</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="title_activity_main">Barcode Reader Sample</string>
+    <string name="barcode_header">Click &quot;Read Barcode&quot; to read a barcode</string>
+    <string name="read_barcode">Read Barcode</string>
+    <string name="auto_focus">Auto Focus</string>
+    <string name="use_flash">Use Flash</string>
+    <string name="barcode_success">Barcode read successfully</string>
+    <string name="barcode_failure">No barcode captured</string>
+    <string name="barcode_error">"Error reading barcode: %1$s"</string>
+    <string name="myqr_image_description">My information QR</string>
+    <string name="record">Visit Record</string>
+    <string name="scan_my_qr">Scan Visitor MyQR</string>
+    <string name="save_record">Save record</string>
+    <string name="button_my_qr">My QR</string>
+    <string name="button_visit_record">Record Visitor</string>
+    <string name="FMC">Fortune Machine Computer</string>
+    <string name="FMC_email">fortunemachinecomputer@gmail.com</string>
+    <string name="visitor_information">Visitor Information</string>
+    <string name="visitor_other_information">Visitor other information</string>
+
+</resources>
