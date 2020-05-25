@@ -1,7 +1,7 @@
 # Visitor Record Book by FMC Version 3
 
 ![Alt text](screenshot/Screenshot_1590386407.png?raw=true "My Input")
-![Alt text](screenshot/Screenshot_1590386451.png?raw=true "Record Visitor")
+
 
 # Play Store listing
 https://play.google.com/store/apps/details?id=com.FMC.VisitorRecordBook
