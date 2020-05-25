@@ -1,25 +1,25 @@
 package com.FMC.VisitorBook.ui.record
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.FMC.VisitorBook.FloatingActionClass
 import com.FMC.VisitorBook.MainActivity
 import com.FMC.VisitorBook.R
-
 import com.FMC.VisitorBook.RecordModel
 import com.FMC.VisitorBook.barcode.BarcodeCaptureActivity
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.gson.Gson
+
 
 class record : Fragment() {
 
@@ -37,10 +37,12 @@ class record : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      var root= inflater.inflate(R.layout.record_fragment, container, false)
+        var root= inflater.inflate(R.layout.record_fragment, container, false)
 
 
-        val button = root.findViewById<Button>(R.id.recordButtonScanMyQR)
+        var button  = root.findViewById<Button>(R.id.recordButtonScanMyQR)
+        //button.setImageResource(android.R.drawable.ic_menu_view);
+        button.setCompoundDrawablesWithIntrinsicBounds(android.R.drawable.ic_menu_camera, 0, 0, 0);
         button.setOnClickListener{
             Log.d(TAG,"Button pushed")
 
@@ -62,9 +64,14 @@ class record : Fragment() {
             FAC?.recordModel = RecordModel()
             FAC?.setFabVisible(true)
             FAC?.recordClass = this
+            //val d = resources.getDrawable(android.R.drawable)
+            //https://stackoverflow.com/questions/7815689/how-do-you-obtain-a-drawable-object-from-a-resource-id-in-android-package
+            FAC?.mainActivity?.fabAction?.setImageResource(android.R.drawable.ic_menu_view);
         }
 
         val buttonSave = root.findViewById<Button>(R.id.recordButtonSave)
+        //https://stackoverflow.com/questions/4502605/how-to-programmatically-set-drawableleft-on-android-button
+        buttonSave.setCompoundDrawablesWithIntrinsicBounds(android.R.drawable.ic_menu_save, 0, 0, 0);
         buttonSave.setOnClickListener{
             Log.d(TAG,"Save Button pushed")
             FAC?.recordModel= getRecordFromView()
@@ -76,7 +83,7 @@ class record : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(RecordViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(RecordViewModel::class.java)
         // TODO: Use the ViewModel
 
     }

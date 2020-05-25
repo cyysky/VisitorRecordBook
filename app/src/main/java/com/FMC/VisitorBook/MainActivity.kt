@@ -13,7 +13,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.FMC.VisitorBook.R
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -23,9 +22,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private var detector: BarcodeDetector? = null
     private var scanResults: TextView? = null
+    var fabAction :FloatingActionButton ?=null
 
-
-    public val FAC: FloatingActionClass =FloatingActionClass(this)
+    val FAC: FloatingActionClass =FloatingActionClass(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         FAC.setFABListener(fab)
         FAC.mainActivity=this
         FAC.testValue="mainActivity"
-
+        fabAction=fab
+        fabAction?.setImageResource(R.drawable.ic_menu_share);
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)

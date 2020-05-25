@@ -120,7 +120,8 @@ class FloatingActionClass (context:Context){
                 Log.d(TAG,"Records.csv not found, try save some records first.")
             }
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(mainActivity,e.message ,Toast.LENGTH_LONG).show()
+            Toast.makeText(mainActivity,"Please install Excel, WPS or Google Sheet to view records.csv" ,Toast.LENGTH_LONG).show()
+            //Toast.makeText(mainActivity,e.message ,Toast.LENGTH_SHORT).show()
             Log.d(TAG,e.message)
         }
 

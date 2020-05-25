@@ -10,7 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_my_qr">My QR</string>
+    <string name="menu_my_qr">My Input</string>
 
     <string name="home_second">Home Second</string>
     <string name="Name">Name</string>
@@ -22,7 +22,7 @@
     <string name="email">E-Mail</string>
     <string name="address">Address</string>
     <string name="note">Note</string>
-    <string name="body_tempreture">Body tempreture in Celsius C</string>
+    <string name="body_tempreture">Body tempreture</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -42,9 +42,9 @@
     <string name="barcode_error">"Error reading barcode: %1$s"</string>
     <string name="myqr_image_description">My information QR</string>
     <string name="record">Visit Record</string>
-    <string name="scan_my_qr">Scan Visitor MyQR</string>
-    <string name="save_record">Save record</string>
-    <string name="button_my_qr">My QR</string>
+    <string name="scan_my_qr">Scan Visitor QR</string>
+    <string name="save_record">Save visitor record</string>
+    <string name="button_my_qr">My Input</string>
     <string name="button_visit_record">Record Visitor</string>
     <string name="FMC">Fortune Machine Computer</string>
     <string name="FMC_email">fortunemachinecomputer@gmail.com</string>

@@ -16,7 +16,7 @@ import android.widget.Toast
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.FMC.VisitorBook.FloatingActionClass
 import com.FMC.VisitorBook.MainActivity
 import com.FMC.VisitorBook.R
@@ -58,6 +58,7 @@ class my_qr : Fragment() {
             FAC?.recordModel = RecordModel()
             FAC?.setFabVisible(true)
             FAC?.my_qr = this
+            FAC?.mainActivity?.fabAction?.setImageResource(R.drawable.ic_menu_send);
         }
 
 
@@ -226,7 +227,7 @@ class my_qr : Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MyQrViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MyQrViewModel::class.java)
         // TODO: Use the ViewModel
 
         //var fab : FloatingActionButton? = activity?.findViewById(R.id.fab)
@@ -236,7 +237,11 @@ class my_qr : Fragment() {
         //fab.setLayoutParams(p)
         //fab?.setVisibility(View.GONE)
         //fab?.setVisibility(View.VISIBLE)
-        Toast.makeText(context,"Entered My QR",Toast.LENGTH_SHORT).show()
+
+
+        //Toast.makeText(context,"Entered My QR",Toast.LENGTH_SHORT).show()
+
+
         Log.d(TAG,"Entered My QR")
         var main = getActivity()
         if (main is MainActivity) {
